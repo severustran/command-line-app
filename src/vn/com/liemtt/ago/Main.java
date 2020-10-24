@@ -1,6 +1,7 @@
 package vn.com.liemtt.ago;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class Main {
@@ -16,11 +17,20 @@ public class Main {
         } else {
             for (int i = 0; i<numElement; i++) {
                 int userInput = Integer.parseInt(sc.nextLine());
-                if(userInput%2==0 && userInput!=0) {
-                    elements.add(userInput);
-                }
+                elements.add(userInput);
             }
         }
+
+        Iterator iterator = elements.iterator();
+        while (iterator.hasNext()) {
+            int temp = (int) iterator.next();
+            if(temp%2 != 0 || temp == 0) {
+                iterator.remove();
+            }
+        }
+
+        System.out.println(elements.size());
+
         if(elements.size()!=0) {
             elements.forEach(element -> {
                 System.out.println(element);
